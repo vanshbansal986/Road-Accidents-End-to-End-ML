@@ -6,9 +6,8 @@
   - [Overview](#overview)
     - [Key Objectives](#key-objectives)
     - [Key Components Used](#key-components-used)
-  - [Project Structure](#project-structure)
 - [Project Overview](#project-overview)
-  - [Project Structure](#project-structure-1)
+  - [Project Structure](#project-structure)
   - [Pipeline Components](#pipeline-components)
     - [1. Data Ingestion](#1-data-ingestion)
     - [2. Data Cleaning](#2-data-cleaning)
@@ -27,15 +26,18 @@ This project focuses on analyzing and predicting road accidents using machine le
 - Predict the severity or likelihood of road accidents using historical data.
 
 ### Key Components Used
-- **Database**: SQLite
+- **Database**: CSV Files
 - **Programming Language**: Python
 - **Libraries**: Pandas, NumPy, Scikit-learn, Matplotlib, Seaborn
-- **Deployment**: Flask (or any preferred framework)
+- **Deployment**: Flask or FastAPI 
 
-## Project Structure
 # Project Overview
 
 This project aims to clean, process, and train a machine learning model using data from US accidents (March 2023). It is structured to allow seamless ingestion, preprocessing, and training of models, while also enabling detailed logging and result tracking.
+
+## Research and Ipynb File
+To view all the research and EDA, Please refer the `Main_Notebook.ipynb` File.<br>
+[Jupyter Notebook](Main_Notebook.ipynb)
 
 ## Project Structure
 
@@ -197,22 +199,16 @@ This script provides functionality for training and evaluating machine learning 
    ```bash
    pip install -r requirements.txt
    ```
-3. Set up the database:
-   - Create the SQLite database.
-   - Populate it with raw data from the `data/` folder.
-
+3. Set up the dataset:
+   - Add your data file and update the `config.yaml` file.
+   
 4. Run the pipeline:
    ```bash
-   python src/pipeline.py
+   python main.py
    ```
 
 ## Usage
-- For exploratory analysis, use the Jupyter notebooks in the `notebooks/` folder.
-- To run the API locally:
-  ```bash
-  python src/app.py
-  ```
-- Access the API at `http://127.0.0.1:5000/predict`.
+- For exploratory analysis, use the Jupyter notebooks in the `research/` folder.
 
 ## License
 This project is licensed under the [MIT License](LICENSE).
