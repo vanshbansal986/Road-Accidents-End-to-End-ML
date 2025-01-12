@@ -107,3 +107,32 @@ x==========x]
 [2025-01-11 13:56:56,894: INFO: main: >>>>>> stage Model Training completed <<<<<<
 
 x==========x]
+[2025-01-12 14:37:21,363: INFO: main: >>>>>> stage Data Ingestion started <<<<<<]
+[2025-01-12 14:37:21,365: INFO: common: yaml file: config.yaml loaded successfully]
+[2025-01-12 14:37:21,367: INFO: common: created directory at: artifacts]
+[2025-01-12 14:37:21,367: INFO: common: created directory at: artifacts/data_ingestion]
+[2025-01-12 14:37:30,407: INFO: main: >>>>>> stage Data Ingestion completed <<<<<<
+
+x==========x]
+[2025-01-12 14:37:30,408: INFO: main: >>>>>> stage Data Cleaning started <<<<<<]
+[2025-01-12 14:37:30,410: INFO: common: yaml file: config.yaml loaded successfully]
+[2025-01-12 14:37:30,410: INFO: common: created directory at: artifacts]
+[2025-01-12 14:37:30,411: INFO: common: created directory at: artifacts/data_cleaning]
+[2025-01-12 14:37:30,411: INFO: common: created directory at: artifacts/main_data]
+[2025-01-12 14:37:37,817: INFO: main: >>>>>> stage Data Cleaning completed <<<<<<
+
+x==========x]
+[2025-01-12 14:37:37,818: INFO: main: >>>>>> stage PreProcessing started <<<<<<]
+[2025-01-12 14:37:37,820: INFO: common: yaml file: config.yaml loaded successfully]
+[2025-01-12 14:37:37,820: INFO: common: created directory at: artifacts]
+[2025-01-12 14:37:37,820: INFO: common: created directory at: artifacts/preprocessing]
+[2025-01-12 14:38:00,866: INFO: main: >>>>>> stage PreProcessing completed <<<<<<
+
+x==========x]
+[2025-01-12 14:38:00,866: INFO: main: >>>>>> stage Model Training started <<<<<<]
+[2025-01-12 14:38:00,869: INFO: common: yaml file: config.yaml loaded successfully]
+[2025-01-12 14:38:00,869: INFO: common: created directory at: artifacts]
+[2025-01-12 14:38:00,869: INFO: common: created directory at: artifacts/model_trainer]
+[2025-01-12 14:41:53,127: INFO: main: >>>>>> stage Model Training completed <<<<<<
+
+x==========x]

@@ -95,7 +95,7 @@ This project aims to clean, process, and train a machine learning model using da
 │   └── utils                       # Utility functions
 │       ├── __init__.py
 │       └── common.py              # Common helper functions
-└── test.ipynb                      # Jupyter Notebook for testing
+└── Main_Notebook.ipynb                      # Jupyter Notebook Containing All research and EDA
 ```
 
 ## Pipeline Components

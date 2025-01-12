@@ -1,0 +1,23 @@
+Model Evaluation Metrics for Logistic Regression model:
+Accuracy: 0.5831
+Precision: 0.5121
+Recall: 0.5831
+F1 Score: 0.4613
+
+
+Model Evaluation Metrics for KNN model:
+Accuracy: 0.5632
+Precision: 0.5501
+Recall: 0.5632
+F1 Score: 0.5532
+
+
+Model Evaluation Metrics for Random Forest Classifier model:
+Accuracy: 0.5899
+Precision: 0.5736
+Recall: 0.5899
+F1 Score: 0.5762
+
+
+Model Evaluation Metrics for Neural Network model:
+Accuracy: 0.5898

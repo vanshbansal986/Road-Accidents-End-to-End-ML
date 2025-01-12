@@ -2,3 +2,11 @@ venv/
 US_Accidents_March23 copy.csv
 sampled_data.csv
 data.csv
+artifacts/data_cleaning/clean_data.csv
+artifacts/main_data/train_data.csv
+artifacts/main_data/test_data.csv
+artifacts/preprocessing/y_test_trf.npy
+artifacts/preprocessing/y_train_trf.npy
+artifacts/preprocessing/x_test_trf.npy
+artifacts/preprocessing/x_train_trf.npy
+artifacts/model_trainer/best_model.pkl

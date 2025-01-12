@@ -2,6 +2,7 @@ import matplotlib
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import pickle
 from sklearn.model_selection import train_test_split
 from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer, KNNImputer
@@ -16,7 +17,10 @@ import scipy.stats as stats
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 from sklearn.neighbors import KNeighborsClassifier
+from sklearn.ensemble import RandomForestClassifier
+
 from src.entity.config_entity import ModelTrainerConfig
+import tensorflow as tf
 
 class ModelTrainer:
     def __init__(self , config: ModelTrainerConfig):
@@ -55,6 +59,65 @@ class ModelTrainer:
 
         self.log_metrics(y_test , y_pred , "KNN")
 
+    def RandomForest(self , x_train , y_train , x_test , y_test):
+        rf = RandomForestClassifier()
+        
+        rf.fit(x_train , y_train)
+        y_pred = rf.predict(x_test)
+
+        model_filename = 'artifacts/model_trainer/best_model.pkl'
+
+        # Save the trained model
+        with open(model_filename, 'wb') as file:
+            pickle.dump(rf, file)
+
+        self.log_metrics(y_test , y_pred , "Random Forest Classifier")
+    
+    
+    def neural_network(self , x_train , y_train , x_test , y_test):
+        
+        inputs = tf.keras.Input(shape=(x_test.shape[1],))
+        x = tf.keras.layers.Dense(64, activation='relu')(inputs)
+        x = tf.keras.layers.Dense(64, activation='relu')(x)
+        outputs = tf.keras.layers.Dense(4, activation='softmax')(x)
+
+        model = tf.keras.Model(inputs, outputs)
+
+        model.compile(
+            optimizer='adam',
+            loss='sparse_categorical_crossentropy',
+            metrics=['accuracy']
+        )
+
+        batch_size = 32
+        epochs = 20
+
+        history = model.fit(
+            x_train,
+            y_train,
+            validation_split=0.2,
+            batch_size=batch_size,
+            epochs=epochs,
+            callbacks=[
+                tf.keras.callbacks.ReduceLROnPlateau(),
+                tf.keras.callbacks.EarlyStopping(
+                    monitor='val_loss',
+                    patience=3,
+                    restore_best_weights=True
+                )
+            ]
+        )
+
+        acc_score = model.evaluate(x_test, y_test, verbose=0)[1]
+        
+        metrics_file_path = self.config.results  
+        with open(metrics_file_path, 'a') as file:
+            file.write(f"Model Evaluation Metrics for Neural Network model:\n")
+            file.write(f"Accuracy: {acc_score:.4f}\n")
+
+
+    
+    
     def start_model_training(self):
         x_train = np.load(self.config.preprocessed_x_train)
         x_test = np.load(self.config.preprocessed_x_test)
@@ -63,3 +126,5 @@ class ModelTrainer:
 
         self.LogisticRegression(x_train , y_train , x_test , y_test)
         self.KNN(x_train , y_train , x_test , y_test)
+        self.RandomForest(x_train , y_train , x_test , y_test)
+        self.neural_network(x_train , y_train , x_test , y_test)
